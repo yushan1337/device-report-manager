@@ -1,0 +1,11 @@
+# Maven build output
+target/
+
+# IntelliJ IDEA local project files
+.idea/
+*.iml
+
+# OS/editor temporary files
+.DS_Store
+*.swp
+*.swo
