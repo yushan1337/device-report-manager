@@ -56,4 +56,20 @@ public class DeviceRepository {
 
         return devices;
     }
+
+    public Long findIdBySerial(Connection connection, String serial) throws SQLException {
+        String sql = "SELECT id FROM devices WHERE serial = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, serial);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getLong("id");
+                }
+            }
+        }
+
+        return null;
+    }
 }
